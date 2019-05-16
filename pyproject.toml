@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "getweather"
+name = "weatherCN"
 version = "0.1.0"
 description = ""
 authors = ["ssfdust <ssfdust@gmail.com>"]
