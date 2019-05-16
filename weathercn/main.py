@@ -19,10 +19,10 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from parser import WeatherParser
-from picfinder import PicFinder
-from reporter import WeatherRepoter
-from paint import Painter
+from .parser import WeatherParser
+from .picfinder import PicFinder
+from .reporter import WeatherRepoter
+from .paint import Painter
 from datetime import datetime
 from argparse import ArgumentParser
 from pathlib import Path
@@ -51,7 +51,3 @@ def main():
     pa.paint()
     bg = pa.crop()
     bg.save(cache_path("weather.png"))
-
-
-if __name__ == '__main__':
-    main()

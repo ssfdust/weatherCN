@@ -20,6 +20,7 @@
 
 from PIL import Image, ImageFont, ImageDraw
 from pathlib import Path
+__file__.format
 
 class Painter(object):
     """绘图模块
@@ -36,7 +37,7 @@ class Painter(object):
         self.font = None
         self.bg = None
         self.img = None
-        self.iconpath = Path.resolve(__file__)
+        self.iconpath = Path(__file__).parent.joinpath('icons')
         self.load()
 
     def load(self):
@@ -223,11 +224,16 @@ class Painter(object):
 
     def load_icons(self):
         """加载图标"""
-        self.up = Image.open("icons/up.png").convert("RGBA")
-        self.down = Image.open("icons/down.png").convert("RGBA")
-        self.water = Image.open("icons/water.png").convert("RGBA")
-        self.wind = Image.open("icons/wind.png").convert("RGBA")
-        self.pm = Image.open("icons/pm.png").convert("RGBA")
+        self.up = Image.open(self.iconpath.joinpath("up.png"))\
+            .convert("RGBA")
+        self.down = Image.open(self.iconpath.joinpath("down.png"))\
+            .convert("RGBA")
+        self.water = Image.open(self.iconpath.joinpath("water.png"))\
+            .convert("RGBA")
+        self.wind = Image.open(self.iconpath.joinpath("wind.png"))\
+            .convert("RGBA")
+        self.pm = Image.open(self.iconpath.joinpath("pm.png"))\
+            .convert("RGBA")
 
     def crop(self):
         return self.img.crop((21, 28, 315, 358))
