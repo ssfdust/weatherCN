@@ -56,11 +56,11 @@ class Painter(object):
         # ================= hover =================
         hover = Image.new("RGBA", size=self.img.size)
         arc = ImageDraw.Draw(hover)
-        arc.ellipse(((240, 75), (275, 110)), (177, 176, 79, int(255 * 0.6)))
+        arc.ellipse(((260, 75), (295, 110)), (177, 176, 79, int(255 * 0.6)))
         self.img = Image.alpha_composite(self.img, hover)
         # ================= header ================
         draw = ImageDraw.Draw(self.img)
-        draw.text((248, 83),
+        draw.text((268, 83),
                   self.parser.current["air_quality"],
                   font=self.lifont
                   )
@@ -225,3 +225,6 @@ class Painter(object):
         self.water = Image.open("icons/water.png").convert("RGBA")
         self.wind = Image.open("icons/wind.png").convert("RGBA")
         self.pm = Image.open("icons/pm.png").convert("RGBA")
+
+    def crop(self):
+        return self.img.crop((21, 28, 315, 358))

@@ -22,13 +22,26 @@ from parser import WeatherParser
 from picfinder import PicFinder
 from reporter import WeatherRepoter
 from paint import Painter
+from datetime import datetime
+from argparse import ArgumentParser
 
-p = PicFinder()
-wr = WeatherRepoter(2019, 5, 101190401)
-par = WeatherParser(wr.current, wr.forecast)
-par.parse()
-pic = p.capture(par.current["code"], None)
-pa = Painter(par, p)
-pa.load()
-pa.paint()
-pa.img.show()
+def main():
+    parser = ArgumentParser()
+    parser.add_argument('location')
+    args = parser.parse_args()
+
+    p = PicFinder()
+    time = datetime.now()
+    wr = WeatherRepoter(time.year, time.month, args.location)
+    par = WeatherParser(wr.current, wr.forecast)
+    par.parse()
+    par.to_json("/home/ssfdust/.cache/weather.json")
+    pa = Painter(par, p)
+    pa.load()
+    pa.paint()
+    bg = pa.crop()
+    bg.save("/home/ssfdust/.cache/weather.png")
+
+
+if __name__ == '__main__':
+    main()
