@@ -20,7 +20,7 @@
 
 from PIL import Image, ImageFont, ImageDraw
 from pathlib import Path
-__file__.format
+from .utils import centertxt
 
 class Painter(object):
     """绘图模块
@@ -138,87 +138,90 @@ class Painter(object):
                   font=self.lifont
                   )
         # ============ below ========================
-        draw.line((35, 216, 290, 216), fill=(122, 109, 109, 250))
-        draw.line((105, 216, 105, 366), fill=(122, 109, 109, 250))
-        draw.line((200, 216, 200, 366), fill=(122, 109, 109, 250))
-        draw.text((38, 226),
-                  self.parser.forecast[0]["date"],
+        draw.line((20, 216, 316, 216), fill=(122, 109, 109, 250))
+        draw.line((118, 216, 118, 366), fill=(122, 109, 109, 250))
+        draw.line((216, 216, 216, 366), fill=(122, 109, 109, 250))
+        # ============ day one ======================
+        draw.text((33, 226),
+                  centertxt(self.parser.forecast[0]["date"]),
                   font=self.dayfont
                   )
-        draw.text((42, 244),
-                  self.parser.forecast[0]["weekday"],
+        draw.text((33, 244),
+                  centertxt(self.parser.forecast[0]["weekday"]),
                   font=self.dayfont
                   )
         self.img.paste(
             self.picfinder.capture(
                 self.parser.forecast[0]['dcode']
             ),
-            (42, 265),
+            (50, 265),
             mask=self.picfinder.capture(
                 self.parser.forecast[0]['dcode']
             )
         )
-        draw.text((32, 300),
-                  "{:^8}".format(self.parser.forecast[0]["weather"]),
+        draw.text((33, 300),
+                  centertxt(format(self.parser.forecast[0]["weather"])),
                   font=self.dayfont
                   )
-        draw.text((38, 320),
-                  "{} ~ {}".format(self.parser.forecast[0]["high"],
-                                   self.parser.forecast[0]["low"]),
+        draw.text((33, 320),
+                  centertxt("{} ~ {}".format(self.parser.forecast[0]["high"],
+                                             self.parser.forecast[0]["low"])),
                   font=self.dayfont
                   )
 
-        draw.text((38 + 90, 226),
-                  self.parser.forecast[1]["date"],
+        # ================= day two ===================================
+        draw.text((33 + 100, 226),
+                  centertxt(self.parser.forecast[1]["date"]),
                   font=self.dayfont
                   )
-        draw.text((42 + 90, 244),
-                  self.parser.forecast[1]["weekday"],
+        draw.text((33 + 100, 244),
+                  centertxt(self.parser.forecast[1]["weekday"]),
                   font=self.dayfont
                   )
         self.img.paste(
             self.picfinder.capture(
                 self.parser.forecast[1]['dcode']
             ),
-            (42 + 90, 265),
+            (50 + 100, 265),
             mask=self.picfinder.capture(
                 self.parser.forecast[1]['dcode']
             )
         )
-        draw.text((32 + 90, 300),
-                  "{:^8s}".format(self.parser.forecast[1]["weather"]),
+        draw.text((33 + 100, 300),
+                  centertxt(format(self.parser.forecast[1]["weather"])),
                   font=self.dayfont
                   )
-        draw.text((38 + 90, 320),
-                  "{} ~ {}".format(self.parser.forecast[1]["high"],
-                                   self.parser.forecast[1]["low"]),
+        draw.text((33 + 100, 320),
+                  centertxt("{} ~ {}".format(self.parser.forecast[1]["high"],
+                                             self.parser.forecast[1]["low"])),
                   font=self.dayfont
                   )
 
-        draw.text((38 + 180, 226),
-                  self.parser.forecast[2]["date"],
+        # ================== day three ==========================
+        draw.text((33 + 200, 226),
+                  centertxt(self.parser.forecast[2]["date"]),
                   font=self.dayfont
                   )
-        draw.text((42 + 180, 244),
-                  self.parser.forecast[2]["weekday"],
+        draw.text((33 + 200, 244),
+                  centertxt(self.parser.forecast[2]["weekday"]),
                   font=self.dayfont
                   )
         self.img.paste(
             self.picfinder.capture(
                 self.parser.forecast[2]['dcode']
             ),
-            (42 + 180, 265),
+            (50 + 200, 265),
             mask=self.picfinder.capture(
                 self.parser.forecast[2]['dcode']
             )
         )
-        draw.text((32 + 180, 300),
-                  "{:^8s}".format(self.parser.forecast[2]["weather"]),
+        draw.text((33 + 200, 300),
+                  centertxt(format(self.parser.forecast[2]["weather"])),
                   font=self.dayfont
                   )
-        draw.text((38 + 180, 320),
-                  "{} ~ {}".format(self.parser.forecast[2]["high"],
-                                   self.parser.forecast[2]["low"]),
+        draw.text((33 + 200, 320),
+                  centertxt("{} ~ {}".format(self.parser.forecast[2]["high"],
+                                             self.parser.forecast[2]["low"])),
                   font=self.dayfont
                   )
 
