@@ -23,16 +23,9 @@ from .parser import WeatherParser
 from .picfinder import PicFinder
 from .reporter import WeatherRepoter
 from .paint import Painter
+from .utils import cache_path
 from datetime import datetime
 from argparse import ArgumentParser
-from pathlib import Path
-
-def cache_path(filename):
-    dirpath = Path.home().joinpath('.cache', 'weatherCN')
-    if not dirpath.exists():
-        dirpath.mkdir(parents=True)
-
-    return dirpath.joinpath(filename)
 
 def main():
     parser = ArgumentParser()
