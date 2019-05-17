@@ -5,6 +5,9 @@
 根据中国天气网生成天气信息，抓取最近四天内的天气以及实时数据，
 附带一些农历日历信息。
 
+### 效果预览
+![Alt text](./screenshots/weather.png)
+
 ### 安装
 * 从relase页面下载安装包
 
@@ -20,6 +23,61 @@ python -m weathercn <城市ID> <字体路径>
 * 将会在用户文件夹下生成.cache/weatherCN目录
 * weather.json为json文件
 * weather.png为生成图片
+
+### json展示
+```json
+{
+    "current": {
+        "humidity": "79%",
+        "wind_direction": "东南风 ",
+        "wind_level": "3级",
+        "air_quality": "29",
+        "air_pressure": "1004",
+        "updateat": "09:55",
+        "cur_weather": "阴",
+        "temperature": "23 ℃",
+        "weather": "小雨转阴",
+        "dcode": "d07",
+        "ncode": "d02",
+        "high": "25 ℃",
+        "low": "21 ℃",
+        "code": "d02",
+        "unsuited": "修坟-安葬-入宅-安门-安床",
+        "suited": "嫁娶-移徙-赴任-除服-纳采",
+        "lunar": "四月十三",
+        "shizhai": ""
+    },
+    "forcast": [
+        {
+            "date": "五月18日",
+            "weekday": "星期六",
+            "high": "25",
+            "low": "18",
+            "dcode": "d01",
+            "ncode": "n01",
+            "weather": "多云"
+        },
+        {
+            "date": "五月19日",
+            "weekday": "星期日",
+            "high": "27",
+            "low": "20",
+            "dcode": "d02",
+            "ncode": "n01",
+            "weather": "阴转多云"
+        },
+        {
+            "date": "五月20日",
+            "weekday": "星期一",
+            "high": "23",
+            "low": "16",
+            "dcode": "d01",
+            "ncode": "n00",
+            "weather": "多云转晴"
+        }
+    ]
+}
+```
 
 ### json释义
 1. humidity: 湿度
@@ -42,5 +100,3 @@ python -m weathercn <城市ID> <字体路径>
 18. shizhai: 是否是地藏十斋日
 19. date: 日期
 
-### 效果预览
-![Alt text](./screenshots/weather.png)
