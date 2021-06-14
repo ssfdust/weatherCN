@@ -19,18 +19,21 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+from argparse import ArgumentParser
+from datetime import datetime
+
+from .paint import Painter, paint_icon
 from .parser import WeatherParser
 from .picfinder import PicFinder
 from .reporter import WeatherRepoter
-from .paint import Painter
 from .utils import cache_path
-from datetime import datetime
-from argparse import ArgumentParser
+
 
 def main():
     parser = ArgumentParser()
-    parser.add_argument('location')
-    parser.add_argument('fontpath')
+    parser.add_argument("location", help="地址")
+    parser.add_argument("fontpath", help="字体路径")
+    parser.add_argument("-i", "--icon", action="store_true", default=False)
     args = parser.parse_args()
 
     p = PicFinder()
@@ -39,8 +42,12 @@ def main():
     par = WeatherParser(wr.current, wr.forecast)
     par.parse()
     par.to_json(cache_path("weather.json"))
-    pa = Painter(par, p, args.fontpath)
-    pa.load()
-    pa.paint()
-    bg = pa.crop()
-    bg.save(cache_path("weather.png"))
+    if args.location and args.fontpath:
+        pa = Painter(par, p, args.fontpath)
+        pa.load()
+        pa.paint()
+        bg = pa.crop()
+        bg.save(cache_path("weather.png"))
+    if args.icon:
+        icon = paint_icon(par, p)
+        icon.save(cache_path("icon.png"))

@@ -83,7 +83,7 @@ class WeatherRepoter(object):
         """提取json字符串，并转为dict"""
         data = data.decode("utf-8")
         jsonstr = regex.search(r"[\s=]([{\[].*?[}\]])$", data).group(1)
-        return json.loads(jsonstr, encoding="utf-8")
+        return json.loads(jsonstr)
 
     def header_maker(self, location):
         """生成合法headers"""

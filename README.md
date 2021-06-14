@@ -6,23 +6,23 @@
 附带一些农历日历信息。
 
 ### 效果预览
-![Alt text](./screenshots/weather.png)
+![Alt text](https://github.com/ssfdust/weatherCN/raw/master/screenshots/weather.png)
 
 ### 安装
-* 从relase页面下载安装包
 
 ```
-pip install weatherCN-0.1.0-py3-none-any.whl
+pip install py-weathercn --user
 ```
 
 ### 使用
 ```
-python -m weathercn <城市ID> <字体路径>
+weathercn -i <城市ID> <字体路径>
 ```
-* 城市ID：如http://www.weather.com.cn/weather1d/101190401.shtml中的101190401
-* 将会在用户文件夹下生成.cache/weatherCN目录
+* 城市ID：如http://www.weather.com.cn/weather1d/101190401.shtml 中的101190401
+* 将会在用户文件夹下生成.cache/weatherCN目录，为缓存weather.json, weather.png, icon.png文件
 * weather.json为json文件
 * weather.png为生成图片
+* icon.png为当前天气的icon图标（例如用于waybar等）
 
 ### json展示
 ```json

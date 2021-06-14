@@ -1,14 +1,20 @@
 [tool.poetry]
-name = "weatherCN"
+name = "py-weathercn"
 version = "0.1.0"
-description = ""
+description = "中国天气python插件"
 authors = ["ssfdust <ssfdust@gmail.com>"]
+readme = "README.md"
+packages = [
+    {include = "weathercn"}
+]
+
+[tool.poetry.scripts]
+weathercn = "weathercn.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.7"
 requests = "^2.21"
 css-parser = "^1.0"
-lxml = "^4.3"
 pillow = "^6.0"
 regex = "^2019.4"
 arrow = "^0.13.1"
