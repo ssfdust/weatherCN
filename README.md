@@ -16,7 +16,7 @@ pip install py-weathercn --user
 
 ### 使用
 ```
-weathercn -i -f <自定义字体> <城市ID或城市名>
+weathercn -f <自定义字体> <城市ID或城市名>
 ```
 * 城市ID：如http://www.weather.com.cn/weather1d/101190401.shtml 中的101190401
 * 将会在用户文件夹下生成.cache/weatherCN目录，为缓存weather.json, weather.png, icon.png文件

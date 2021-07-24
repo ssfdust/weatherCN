@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "py-weathercn"
-version = "0.1.0"
+version = "0.1.1"
 description = "中国天气python插件"
 authors = ["ssfdust <ssfdust@gmail.com>"]
 readme = "README.md"
