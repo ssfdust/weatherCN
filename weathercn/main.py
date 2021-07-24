@@ -21,33 +21,39 @@
 
 from argparse import ArgumentParser
 from datetime import datetime
+from weathercn.citycode import get_code
+from weathercn.font import FontSelector
 
-from .paint import Painter, paint_icon
-from .parser import WeatherParser
-from .picfinder import PicFinder
-from .reporter import WeatherRepoter
-from .utils import cache_path
+from weathercn.paint import Painter, paint_icon
+from weathercn.parser import WeatherParser
+from weathercn.picfinder import PicFinder
+from weathercn.reporter import WeatherRepoter
+from weathercn.utils import cache_path
 
 
 def main():
     parser = ArgumentParser()
     parser.add_argument("location", help="地址")
-    parser.add_argument("fontpath", help="字体路径")
+    parser.add_argument("-f", "--fontpath", help="字体路径", default="")
     parser.add_argument("-i", "--icon", action="store_true", default=False)
     args = parser.parse_args()
 
     p = PicFinder()
     time = datetime.now()
-    wr = WeatherRepoter(time.year, time.month, args.location)
+    wr = WeatherRepoter(time.year, time.month, get_code(args.location))
     par = WeatherParser(wr.current, wr.forecast)
     par.parse()
     par.to_json(cache_path("weather.json"))
-    if args.location and args.fontpath:
-        pa = Painter(par, p, args.fontpath)
-        pa.load()
-        pa.paint()
-        bg = pa.crop()
-        bg.save(cache_path("weather.png"))
+    selector = FontSelector(args.fontpath)
+    fontpath = str(selector.select_the_best())
+    pa = Painter(par, p, fontpath)
+    pa.load()
+    pa.paint()
+    bg = pa.crop()
+    bg.save(cache_path("weather.png"))
     if args.icon:
         icon = paint_icon(par, p)
         icon.save(cache_path("icon.png"))
+
+if __name__ == '__main__':
+    main()
