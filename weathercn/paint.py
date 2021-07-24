@@ -52,6 +52,7 @@ class Painter(object):
 
     def set_font(self):
         """设置字体"""
+        ImageFont
         self.tifont = ImageFont.truetype(self.fontpath, 60)
         self.font = ImageFont.truetype(self.fontpath, 20)
         self.midfont = ImageFont.truetype(self.fontpath, 30)
