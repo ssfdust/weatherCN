@@ -35,7 +35,6 @@ def main():
     parser = ArgumentParser()
     parser.add_argument("location", help="地址")
     parser.add_argument("-f", "--fontpath", help="字体路径", default="")
-    parser.add_argument("-i", "--icon", action="store_true", default=False)
     args = parser.parse_args()
 
     p = PicFinder()
@@ -51,9 +50,6 @@ def main():
     pa.paint()
     bg = pa.crop()
     bg.save(cache_path("weather.png"))
-    if args.icon:
-        icon = paint_icon(par, p)
-        icon.save(cache_path("icon.png"))
 
 if __name__ == '__main__':
     main()
