@@ -1,29 +1,34 @@
-[tool.poetry]
+[project]
 name = "py-weathercn"
-version = "0.1.1"
-description = "中国天气python插件"
-authors = ["ssfdust <ssfdust@gmail.com>"]
-readme = "README.md"
-packages = [
-    {include = "weathercn"}
+version = "0.2.0"
+description = "Add your description here"
+authors = [
+    { name = "ssfdust", email = "ssfdust@gmail.com" }
 ]
+dependencies = [
+    "requests>=2.31.0",
+    "css-parser>=1.0.10",
+    "pillow>=10.1.0",
+    "regex>=2023.12.25",
+    "arrow>=1.3.0",
+    "fclist-cffi>=1.1.2",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
 
-[tool.poetry.scripts]
+[tool.hatch.build.targets.wheel]
+packages = ["src/weathercn"]
+
+[project.scripts]
 weathercn = "weathercn.main:main"
 
-[tool.poetry.dependencies]
-python = "^3.7"
-requests = "^2.21"
-css-parser = "^1.0"
-pillow = ">=6,<9"
-regex = "^2019.4"
-arrow = "^0.13.1"
-fclist-cffi = "^1.1.2"
-
-[tool.poetry.dev-dependencies]
-ipdb = "^0.12.0"
-pytest = "^6.2.4"
-
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true

@@ -200,32 +200,33 @@ class Painter(object):
         )
 
         # ================== day three ==========================
+        last_index = len(self.parser.forecast) - 1
         draw.text(
             (33 + 200, 226),
-            centertxt(self.parser.forecast[2]["date"]),
+            centertxt(self.parser.forecast[last_index]["date"]),
             font=self.dayfont,
         )
         draw.text(
             (33 + 200, 244),
-            centertxt(self.parser.forecast[2]["weekday"]),
+            centertxt(self.parser.forecast[last_index]["weekday"]),
             font=self.dayfont,
         )
         self.img.paste(
-            self.picfinder.capture(self.parser.forecast[2]["dcode"]),
+            self.picfinder.capture(self.parser.forecast[last_index]["dcode"]),
             (50 + 200, 265),
-            mask=self.picfinder.capture(self.parser.forecast[2]["dcode"]),
+            mask=self.picfinder.capture(self.parser.forecast[last_index]["dcode"]),
         )
         draw.text(
             (33 + 200, 300),
-            centertxt(format(self.parser.forecast[2]["weather"])),
+            centertxt(format(self.parser.forecast[last_index]["weather"])),
             font=self.dayfont,
         )
         draw.text(
             (33 + 200, 320),
             centertxt(
                 "{} ~ {}".format(
-                    self.parser.forecast[2]["high"],
-                    self.parser.forecast[2]["low"],
+                    self.parser.forecast[last_index]["high"],
+                    self.parser.forecast[last_index]["low"],
                 )
             ),
             font=self.dayfont,

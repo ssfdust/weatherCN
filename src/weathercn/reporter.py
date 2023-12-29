@@ -54,7 +54,7 @@ class WeatherRepoter(object):
         访问地址时，需要带上时间参数以及Referer的headers
         """
         # 生成时间参数
-        params = {'_': arrow.get().timestamp * 1000}
+        params = {'_': arrow.get().timestamp() * 1000}
         # 获取日历数据
         resp = requests.get(self.url, headers=self.headers, params=params)
         self.calendar = self.parse(resp.content)
