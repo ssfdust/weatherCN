@@ -136,101 +136,105 @@ class Painter(object):
         draw.line((118, 216, 118, 366), fill=(122, 109, 109, 250))
         draw.line((216, 216, 216, 366), fill=(122, 109, 109, 250))
         # ============ day one ======================
-        draw.text(
-            (33, 226),
-            centertxt(self.parser.forecast[0]["date"]),
-            font=self.dayfont,
-        )
-        draw.text(
-            (33, 244),
-            centertxt(self.parser.forecast[0]["weekday"]),
-            font=self.dayfont,
-        )
-        self.img.paste(
-            self.picfinder.capture(self.parser.forecast[0]["dcode"]),
-            (50, 265),
-            mask=self.picfinder.capture(self.parser.forecast[0]["dcode"]),
-        )
-        draw.text(
-            (33, 300),
-            centertxt(format(self.parser.forecast[0]["weather"])),
-            font=self.dayfont,
-        )
-        draw.text(
-            (33, 320),
-            centertxt(
-                "{} ~ {}".format(
-                    self.parser.forecast[0]["high"],
-                    self.parser.forecast[0]["low"],
-                )
-            ),
-            font=self.dayfont,
-        )
+
+        if len(self.parser.forecast) >= 1:
+            draw.text(
+                (33, 226),
+                centertxt(self.parser.forecast[0]["date"]),
+                font=self.dayfont,
+            )
+            draw.text(
+                (33, 244),
+                centertxt(self.parser.forecast[0]["weekday"]),
+                font=self.dayfont,
+            )
+            self.img.paste(
+                self.picfinder.capture(self.parser.forecast[0]["dcode"]),
+                (50, 265),
+                mask=self.picfinder.capture(self.parser.forecast[0]["dcode"]),
+            )
+            draw.text(
+                (33, 300),
+                centertxt(format(self.parser.forecast[0]["weather"])),
+                font=self.dayfont,
+            )
+            draw.text(
+                (33, 320),
+                centertxt(
+                    "{} ~ {}".format(
+                        self.parser.forecast[0]["high"],
+                        self.parser.forecast[0]["low"],
+                    )
+                ),
+                font=self.dayfont,
+            )
 
         # ================= day two ===================================
-        draw.text(
-            (33 + 100, 226),
-            centertxt(self.parser.forecast[1]["date"]),
-            font=self.dayfont,
-        )
-        draw.text(
-            (33 + 100, 244),
-            centertxt(self.parser.forecast[1]["weekday"]),
-            font=self.dayfont,
-        )
-        self.img.paste(
-            self.picfinder.capture(self.parser.forecast[1]["dcode"]),
-            (50 + 100, 265),
-            mask=self.picfinder.capture(self.parser.forecast[1]["dcode"]),
-        )
-        draw.text(
-            (33 + 100, 300),
-            centertxt(format(self.parser.forecast[1]["weather"])),
-            font=self.dayfont,
-        )
-        draw.text(
-            (33 + 100, 320),
-            centertxt(
-                "{} ~ {}".format(
-                    self.parser.forecast[1]["high"],
-                    self.parser.forecast[1]["low"],
-                )
-            ),
-            font=self.dayfont,
-        )
+        if len(self.parser.forecast) >= 2:
+            draw.text(
+                (33 + 100, 226),
+                centertxt(self.parser.forecast[1]["date"]),
+                font=self.dayfont,
+            )
+            draw.text(
+                (33 + 100, 244),
+                centertxt(self.parser.forecast[1]["weekday"]),
+                font=self.dayfont,
+            )
+            self.img.paste(
+                self.picfinder.capture(self.parser.forecast[1]["dcode"]),
+                (50 + 100, 265),
+                mask=self.picfinder.capture(self.parser.forecast[1]["dcode"]),
+            )
+            draw.text(
+                (33 + 100, 300),
+                centertxt(format(self.parser.forecast[1]["weather"])),
+                font=self.dayfont,
+            )
+            draw.text(
+                (33 + 100, 320),
+                centertxt(
+                    "{} ~ {}".format(
+                        self.parser.forecast[1]["high"],
+                        self.parser.forecast[1]["low"],
+                    )
+                ),
+                font=self.dayfont,
+            )
 
         # ================== day three ==========================
-        last_index = len(self.parser.forecast) - 1
-        draw.text(
-            (33 + 200, 226),
-            centertxt(self.parser.forecast[last_index]["date"]),
-            font=self.dayfont,
-        )
-        draw.text(
-            (33 + 200, 244),
-            centertxt(self.parser.forecast[last_index]["weekday"]),
-            font=self.dayfont,
-        )
-        self.img.paste(
-            self.picfinder.capture(self.parser.forecast[last_index]["dcode"]),
-            (50 + 200, 265),
-            mask=self.picfinder.capture(self.parser.forecast[last_index]["dcode"]),
-        )
-        draw.text(
-            (33 + 200, 300),
-            centertxt(format(self.parser.forecast[last_index]["weather"])),
-            font=self.dayfont,
-        )
-        draw.text(
-            (33 + 200, 320),
-            centertxt(
-                "{} ~ {}".format(
-                    self.parser.forecast[last_index]["high"],
-                    self.parser.forecast[last_index]["low"],
-                )
-            ),
-            font=self.dayfont,
-        )
+        if len(self.parser.forecast) >= 3:
+            last_index = 2
+            draw.text(
+                (33 + 200, 226),
+                centertxt(self.parser.forecast[last_index]["date"]),
+                font=self.dayfont,
+            )
+            draw.text(
+                (33 + 200, 244),
+                centertxt(self.parser.forecast[last_index]["weekday"]),
+                font=self.dayfont,
+            )
+            self.img.paste(
+                self.picfinder.capture(self.parser.forecast[last_index]["dcode"]),
+                (50 + 200, 265),
+                mask=self.picfinder.capture(self.parser.forecast[last_index]["dcode"]),
+            )
+            draw.text(
+                (33 + 200, 300),
+                centertxt(format(self.parser.forecast[last_index]["weather"])),
+                font=self.dayfont,
+            )
+            draw.text(
+                (33 + 200, 320),
+                centertxt(
+                    "{} ~ {}".format(
+                        self.parser.forecast[last_index]["high"],
+                        self.parser.forecast[last_index]["low"],
+                    )
+                ),
+                font=self.dayfont,
+            )
 
     def load_icons(self):
         """加载图标"""
