@@ -25,6 +25,16 @@ import json
 import requests
 from PIL import Image
 
+
+def float2int(value):
+    """将浮点数转换为整数"""
+    float_val = float(value)
+    if float_val - int(float_val) > 0.5:
+        return int(float_val) + 1
+    else:
+        return int(float(value))
+
+
 class WeatherParser(object):
 
     def __init__(self, current, forecast):
@@ -86,7 +96,7 @@ class WeatherParser(object):
             "air_pressure": self._current["qy"],
             "updateat": self._current["time"],
             "cur_weather": self._current['weather'],
-            "temperature": "%s ℃" % self._current["temp"],
+            "temperature": "%s ℃" % float2int(self._current["temp"]),
             "weather": self._forecast[0]["w1"],
             "dcode": "d{}".format(self._forecast[0]["c1"]),
             "ncode": "d{}".format(self._forecast[0]["c2"]),

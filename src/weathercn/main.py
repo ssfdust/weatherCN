@@ -49,7 +49,7 @@ def main():
     pa.load()
     pa.paint()
     bg = pa.crop()
-    bg.save(cache_path("weather.png"))
+    bg.save(cache_path("weather.png"), quality=1)
 
 if __name__ == '__main__':
     main()

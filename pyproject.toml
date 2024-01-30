@@ -1,6 +1,6 @@
 [project]
 name = "py-weathercn"
-version = "0.2.0"
+version = "0.2.1"
 description = "Add your description here"
 authors = [
     { name = "ssfdust", email = "ssfdust@gmail.com" }
@@ -14,7 +14,7 @@ dependencies = [
     "fclist-cffi>=1.1.2",
 ]
 readme = "README.md"
-requires-python = ">= 3.8"
+requires-python = ">= 3.9"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/weathercn"]
